@@ -16,6 +16,8 @@ process.stdin.on('readable', function() {
 
 */
 
+var OSinfo = require('../modules/OSInfo');
+
 process.stdin.on('readable', function() {
     // metoda .read() ma za zadanie odczytać co użytkownik podał na wejściu
     var input = process.stdin.read();
@@ -33,6 +35,9 @@ process.stdin.on('readable', function() {
             process.stdout.write(process.version);
             process.stdout.write('\n\nOS version\n');
             process.stdout.write(process.env.OS + '\n');
+            break;
+            case '/getOSinfo':
+            OSinfo.print();
             break;
             default:
             process.stderr.write('Wrong instruction!\n');
